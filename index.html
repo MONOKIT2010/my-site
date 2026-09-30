@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#bd3f69">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <title>Для тебе ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Екран 1: Головне питання -->
+    <div class="card" id="questionScreen">
+        <div class="heart">❤️</div>
+        <div class="eyebrow">Маленьке запрошення</div>
+        <h1>Хочу запросити тебе на маленьку пригоду</h1>
+        <p>Підемо кудись разом? Обіцяю гарний настрій 🥰</p>
+
+        <div class="buttons">
+            <button id="yes">❤️ Так, хочу!</button>
+            <button id="no">Не сьогодні</button>
+        </div>
+
+        <div class="gentle-note">Без тиску — просто честно ❤️</div>
+    </div>
+
+    <!-- Екран 2: Вибір місця -->
+    <div class="card hidden" id="placeScreen">
+        <div class="heart">💗</div>
+        <div class="eyebrow">Крок 1 із 3</div>
+        <h1>Ура! ❤️</h1>
+        <p>Тоді обирай, куди підемо:</p>
+
+        <div class="options-group">
+            <button class="place option-btn" data-place="Парк «Наталка»">🌳 Парк «Наталка»</button>
+            <button class="place option-btn" data-place="Поділ / Набережна">🌊 Поділ / Набережна</button>
+            <button class="place option-btn" data-place="Затишна кав’ярня">☕ Затишна кав’ярня</button>
+        </div>
+
+        <label class="custom-place-label" for="customPlace">Або запропонуй свій варіант:</label>
+        <input class="custom-input" id="customPlace" type="text" maxlength="100" placeholder="Напиши своє улюблене місце..." autocomplete="off">
+
+        <button class="step-next" id="continueToFood">Далі: обрати, де поїсти →</button>
+    </div>
+
+    <!-- Екран 3: Вибір їжі -->
+    <div class="card hidden" id="foodScreen">
+        <div class="heart">🍽️</div>
+        <div class="eyebrow">Крок 2 із 3</div>
+        <h1>А тепер поїмо ❤️</h1>
+        <p>Обери, що тобі більше до вподоби:</p>
+
+        <div class="options-group">
+            <button class="food option-btn" data-food="McDonald's 🍟">🍟 McDonald's</button>
+            <button class="food option-btn" data-food="Кав’ярня ☕">☕ Кав’ярня / Десерти</button>
+            <button class="food option-btn" data-food="Піца або суші 🍕">🍕 Піца / Суші</button>
+        </div>
+
+        <label class="custom-place-label" for="customFood">Або свій варіант:</label>
+        <input class="custom-input" id="customFood" type="text" maxlength="100" placeholder="Що б ти хотіла з'їсти?" autocomplete="off">
+
+        <button class="step-back" id="backToPlace">← Назад до вибору місця</button>
+        <button class="step-next" id="continueToDay">Далі: обрати день →</button>
+    </div>
+
+    <!-- Екран 4: Вибір дня -->
+    <div class="card hidden" id="dateScreen">
+        <div class="heart">🗓️</div>
+        <div class="eyebrow">Крок 3 із 3</div>
+        <h1>Коли тобі зручно?</h1>
+        <p>Можемо зустрітися цими днями:</p>
+
+        <div class="options-group">
+            <button class="day option-btn" data-day="У п’ятницю 📅">📅 У п’ятницю</button>
+            <button class="day option-btn" data-day="У суботу 📅">📅 У суботу</button>
+            <button class="day option-btn" data-day="У неділю 📅">📅 У неділю</button>
+        </div>
+
+        <button class="step-back" id="backToFood">← Назад до вибору їжі</button>
+        <button class="step-next" id="confirm">❤️ Підтвердити наш план</button>
+    </div>
+
+    <!-- Екран 5: Фінал -->
+    <div class="card hidden" id="finalScreen">
+        <div class="success">🥰</div>
+        <div class="eyebrow">Наш маленький план</div>
+        <h1>Домовилися! ❤️</h1>
+        <p id="resultText"></p>
+        <p class="final-sub">Після підтвердження надішлемо план у Telegram або email.</p>
+        <button class="step-back" id="sharePlan" type="button">Поділитися планом</button>
+        <p class="share-status" id="shareStatus" aria-live="polite"></p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/service-worker.js").catch((error) => {
+                    console.error("Не вдалося зареєструвати офлайн-режим:", error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

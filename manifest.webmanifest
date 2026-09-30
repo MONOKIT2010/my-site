@@ -1,0 +1,18 @@
+{
+  "name": "Для тебе ❤️",
+  "short_name": "Для тебе",
+  "description": "Маленьке запрошення з Telegram-сповіщенням",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff7fb",
+  "theme_color": "#bd3f69",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

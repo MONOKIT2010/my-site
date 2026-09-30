@@ -1,0 +1,10 @@
+{
+  "name": "date-invite",
+  "version": "1.0.0",
+  "description": "Інтерактивне мобільне запрошення на побачення з email-сповіщенням",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  }
+}
